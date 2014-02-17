@@ -10,343 +10,283 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     21960,        595]
-NotebookOptionsPosition[     21028,        560]
-NotebookOutlinePosition[     21405,        577]
-CellTagsIndexPosition[     21362,        574]
+NotebookDataLength[     22672,        627]
+NotebookOptionsPosition[     21676,        590]
+NotebookOutlinePosition[     22032,        606]
+CellTagsIndexPosition[     21989,        603]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell["\<\
-Suppose you have 2 shrimp in a unit square
-Let x be probabilty that food pellet doesn't land in either shrimp circle
-Let y be probabilty that food pellet lands in shrimp circle 1
-Let z be probabilty that food pellet lands in shrimp circle 2
+Cell[TextData[StyleBox["The Living Shrimp Problem and the Multinomial \
+Distribution", "Subtitle",
+ FontSize->16]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.601558704453348*^9, 3.601558830439849*^9}, {
+   3.601628594364409*^9, 3.601628628190791*^9}, 3.601628758880187*^9, {
+   3.601628799389217*^9, 3.601629176903942*^9}},
+ FormatType->"TextForm"],
 
-If you toss 3 food pellets into square then distribution is given by \
-multinomial.
-\
-\>", "Input",
- CellChangeTimes->{{3.601558704453348*^9, 3.601558830439849*^9}}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"Clear", "[", 
-   RowBox[{"x", ",", "y", ",", "z", ",", "w"}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Expand", "[", 
+Cell[TextData[{
+ StyleBox["\n", "Subtitle",
+  FontSize->16],
+ StyleBox["\n",
+  FontSize->14],
+ StyleBox["Suppose you have two shrimp in a unit square.\n\nLet x be \
+probabilty that food pellet lands in shrimp circle 1\nLet y be probabilty \
+that food pellet lands in shrimp circle 2\nLet z be probabilty that food \
+pellet doesn' t land in either shrimp circle\n\nIf you toss 3 food pellets \
+into square then distribution is given by multinomial distribution.\n\nLet k1 \
+be number of food pellets in circle 1\nLet k2 be number of food pellets in \
+circle 2\nLet k2 be number of food pellets in neither circle 1 or 2.\nWe have \
+k1+k2+k3 = 3 food pellets\n\nThen :\n  P (k1, k2, k3) = Multinomial[k1, k2, \
+k3] ",
+  FontSize->14,
+  FontWeight->"Plain"],
+ Cell[BoxData[
+  FormBox[
    RowBox[{
+    SuperscriptBox["x", "k1"], " ", 
+    SuperscriptBox["y", "k2"], " ", 
+    SuperscriptBox["z", "k3"]}], TraditionalForm]],
+  FontSize->14,
+  FontWeight->"Plain"],
+ StyleBox["  = ",
+  FontSize->14,
+  FontWeight->"Plain"],
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["x", "k1"], " ", 
+     SuperscriptBox["y", "k2"], " ", 
+     SuperscriptBox["z", "k3"], " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"k1", "+", "k2", "+", "k3"}], ")"}], "!"}]}], 
+    RowBox[{
+     RowBox[{"k1", "!"}], " ", 
+     RowBox[{"k2", "!"}], " ", 
+     RowBox[{"k3", "!"}]}]], TraditionalForm]],
+  FontSize->14,
+  FontWeight->"Plain"],
+ StyleBox["\n  \n  which is the monomial term in the expansion of",
+  FontSize->14,
+  FontWeight->"Plain"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"x", "+", "y", "+", "z"}], ")"}], "3"]}], TraditionalForm]],
+  FontSize->14,
+  FontWeight->"Plain"],
+ StyleBox[" with exponents k1, k2, k3\n\n",
+  FontSize->14,
+  FontWeight->"Plain"],
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
     RowBox[{"(", 
-     RowBox[{"x", "+", "y", "+", "z"}], ")"}], "^", "3"}], "]"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{"Expand", "[", 
-  RowBox[{
-   RowBox[{"(", 
-    RowBox[{"w", "+", "x", "+", "y", "+", "z"}], ")"}], "^", "4"}], 
-  "]"}]}], "Input",
- CellChangeTimes->{{3.601558833175963*^9, 3.60155884892058*^9}, {
-  3.601602347473048*^9, 3.601602357545699*^9}, {3.601602440021782*^9, 
-  3.601602445170435*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  SuperscriptBox["x", "3"], "+", 
-  RowBox[{"3", " ", 
-   SuperscriptBox["x", "2"], " ", "y"}], "+", 
-  RowBox[{"3", " ", "x", " ", 
-   SuperscriptBox["y", "2"]}], "+", 
-  SuperscriptBox["y", "3"], "+", 
-  RowBox[{"3", " ", 
-   SuperscriptBox["x", "2"], " ", "z"}], "+", 
-  RowBox[{"6", " ", "x", " ", "y", " ", "z"}], "+", 
-  RowBox[{"3", " ", 
-   SuperscriptBox["y", "2"], " ", "z"}], "+", 
-  RowBox[{"3", " ", "x", " ", 
-   SuperscriptBox["z", "2"]}], "+", 
-  RowBox[{"3", " ", "y", " ", 
-   SuperscriptBox["z", "2"]}], "+", 
-  SuperscriptBox["z", "3"]}]], "Output",
- CellChangeTimes->{
-  3.601558849860241*^9, 3.601602358143852*^9, {3.601602441445245*^9, 
-   3.601602445604066*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  SuperscriptBox["w", "4"], "+", 
-  RowBox[{"4", " ", 
-   SuperscriptBox["w", "3"], " ", "x"}], "+", 
-  RowBox[{"6", " ", 
-   SuperscriptBox["w", "2"], " ", 
-   SuperscriptBox["x", "2"]}], "+", 
-  RowBox[{"4", " ", "w", " ", 
-   SuperscriptBox["x", "3"]}], "+", 
-  SuperscriptBox["x", "4"], "+", 
-  RowBox[{"4", " ", 
-   SuperscriptBox["w", "3"], " ", "y"}], "+", 
-  RowBox[{"12", " ", 
-   SuperscriptBox["w", "2"], " ", "x", " ", "y"}], "+", 
-  RowBox[{"12", " ", "w", " ", 
-   SuperscriptBox["x", "2"], " ", "y"}], "+", 
-  RowBox[{"4", " ", 
-   SuperscriptBox["x", "3"], " ", "y"}], "+", 
-  RowBox[{"6", " ", 
-   SuperscriptBox["w", "2"], " ", 
-   SuperscriptBox["y", "2"]}], "+", 
-  RowBox[{"12", " ", "w", " ", "x", " ", 
-   SuperscriptBox["y", "2"]}], "+", 
-  RowBox[{"6", " ", 
-   SuperscriptBox["x", "2"], " ", 
-   SuperscriptBox["y", "2"]}], "+", 
-  RowBox[{"4", " ", "w", " ", 
-   SuperscriptBox["y", "3"]}], "+", 
-  RowBox[{"4", " ", "x", " ", 
-   SuperscriptBox["y", "3"]}], "+", 
-  SuperscriptBox["y", "4"], "+", 
-  RowBox[{"4", " ", 
-   SuperscriptBox["w", "3"], " ", "z"}], "+", 
-  RowBox[{"12", " ", 
-   SuperscriptBox["w", "2"], " ", "x", " ", "z"}], "+", 
-  RowBox[{"12", " ", "w", " ", 
-   SuperscriptBox["x", "2"], " ", "z"}], "+", 
-  RowBox[{"4", " ", 
-   SuperscriptBox["x", "3"], " ", "z"}], "+", 
-  RowBox[{"12", " ", 
-   SuperscriptBox["w", "2"], " ", "y", " ", "z"}], "+", 
-  RowBox[{"24", " ", "w", " ", "x", " ", "y", " ", "z"}], "+", 
-  RowBox[{"12", " ", 
-   SuperscriptBox["x", "2"], " ", "y", " ", "z"}], "+", 
-  RowBox[{"12", " ", "w", " ", 
-   SuperscriptBox["y", "2"], " ", "z"}], "+", 
-  RowBox[{"12", " ", "x", " ", 
-   SuperscriptBox["y", "2"], " ", "z"}], "+", 
-  RowBox[{"4", " ", 
-   SuperscriptBox["y", "3"], " ", "z"}], "+", 
-  RowBox[{"6", " ", 
-   SuperscriptBox["w", "2"], " ", 
-   SuperscriptBox["z", "2"]}], "+", 
-  RowBox[{"12", " ", "w", " ", "x", " ", 
-   SuperscriptBox["z", "2"]}], "+", 
-  RowBox[{"6", " ", 
-   SuperscriptBox["x", "2"], " ", 
-   SuperscriptBox["z", "2"]}], "+", 
-  RowBox[{"12", " ", "w", " ", "y", " ", 
-   SuperscriptBox["z", "2"]}], "+", 
-  RowBox[{"12", " ", "x", " ", "y", " ", 
-   SuperscriptBox["z", "2"]}], "+", 
-  RowBox[{"6", " ", 
-   SuperscriptBox["y", "2"], " ", 
-   SuperscriptBox["z", "2"]}], "+", 
-  RowBox[{"4", " ", "w", " ", 
-   SuperscriptBox["z", "3"]}], "+", 
-  RowBox[{"4", " ", "x", " ", 
-   SuperscriptBox["z", "3"]}], "+", 
-  RowBox[{"4", " ", "y", " ", 
-   SuperscriptBox["z", "3"]}], "+", 
-  SuperscriptBox["z", "4"]}]], "Output",
- CellChangeTimes->{
-  3.601558849860241*^9, 3.601602358143852*^9, {3.601602441445245*^9, 
-   3.6016024456088953`*^9}}]
-}, Open  ]],
-
-Cell["\<\
-Now probablity that all three pellets lands outside of two shrimp circles is \
-x^3
-Probability that two pellets land outside of two shrimp circles and one \
-pellet lands in shrimp circle 1 is 3x^2 y, etc.
-So we have following probabilities that 0 ,1, and 2 shrimps lives\
-\>", "Input",
- CellChangeTimes->{{3.601558981823387*^9, 3.6015589826376333`*^9}, {
-  3.601559021203878*^9, 3.601559120782598*^9}}],
+     RowBox[{"x", "+", "y", "+", "z"}], ")"}], "3"], TraditionalForm]],
+  FontSize->14,
+  FontWeight->"Plain"],
+ StyleBox[" = ",
+  FontSize->14,
+  FontWeight->"Plain"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["x", "3"], "+", 
+    RowBox[{"3", " ", 
+     SuperscriptBox["x", "2"], " ", "y"}], "+", 
+    RowBox[{"3", " ", 
+     SuperscriptBox["x", "2"], " ", "z"}], "+", 
+    RowBox[{"3", " ", "x", " ", 
+     SuperscriptBox["y", "2"]}], "+", 
+    RowBox[{"6", " ", "x", " ", "y", " ", "z"}], "+", 
+    RowBox[{"3", " ", "x", " ", 
+     SuperscriptBox["z", "2"]}], "+", 
+    SuperscriptBox["y", "3"], "+", 
+    RowBox[{"3", " ", 
+     SuperscriptBox["y", "2"], " ", "z"}], "+", 
+    RowBox[{"3", " ", "y", " ", 
+     SuperscriptBox["z", "2"]}], "+", 
+    SuperscriptBox["z", "3"]}], TraditionalForm]],
+  FontSize->14,
+  FontWeight->"Plain"],
+ StyleBox["\n\nFor example: \nprobability that all three pellets land outside \
+of shrimp circles is P(0,0,3) = ",
+  FontSize->14,
+  FontWeight->"Plain"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      RowBox[{"3", "!"}], " ", 
+      SuperscriptBox["x", "0"], " ", 
+      SuperscriptBox["y", "0"], " ", 
+      SuperscriptBox["z", "3"]}], 
+     RowBox[{
+      RowBox[{"3", "!"}], " ", 
+      RowBox[{"0", "!"}], " ", 
+      RowBox[{"0", "!"}]}]], "=", 
+    SuperscriptBox["z", "3"]}], TraditionalForm]],
+  FontSize->14,
+  FontWeight->"Plain"],
+ StyleBox["\nprobability that two pellets land outside of two shrimp circle \
+and one pellet lands in circle  is P(1,0,2) = ",
+  FontSize->14,
+  FontWeight->"Plain"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      RowBox[{"3", "!"}], " ", 
+      SuperscriptBox["x", "1"], " ", 
+      SuperscriptBox["y", "0"], " ", 
+      SuperscriptBox["z", "2"]}], 
+     RowBox[{
+      RowBox[{"2", "!"}], " ", 
+      RowBox[{"1", "!"}], " ", 
+      RowBox[{"0", "!"}]}]], "=", 
+    RowBox[{"3", " ", 
+     SuperscriptBox["z", "2"], " ", "y"}]}], TraditionalForm]],
+  FontSize->14,
+  FontWeight->"Plain"],
+ StyleBox["\n  \nSo to compute probability that zero shrimp lives we should \
+add up all monomial terms which don't contain x or y namely ",
+  FontSize->14,
+  FontWeight->"Plain"],
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["z", "3"], TraditionalForm]],
+  FontSize->14,
+  FontWeight->"Plain"],
+ StyleBox["\n\nTo compute probability that one shrimp lives we should add up \
+all monomial terms which include only x or y or (x and z) or (y and z) terms \
+namely: ",
+  FontSize->14,
+  FontWeight->"Plain"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["x", "3"], "+", " ", 
+    RowBox[{"3", " ", 
+     SuperscriptBox["x", "2"], " ", "z"}], "+", 
+    RowBox[{"3", " ", "x", " ", 
+     SuperscriptBox["z", "2"]}], "+", 
+    SuperscriptBox["y", "3"], "+", 
+    RowBox[{"3", " ", 
+     SuperscriptBox["y", "2"], " ", "z"}], "+", 
+    RowBox[{"3", " ", "y", " ", 
+     SuperscriptBox["z", "2"]}]}], TraditionalForm]],
+  FontSize->14,
+  FontWeight->"Plain"],
+ StyleBox["\n\nTo compute probability that two shrimps live we should add up \
+all monomial terms which include x and y and z or ( x and y) namely:\n",
+  FontSize->14,
+  FontWeight->"Plain"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"3", " ", 
+     SuperscriptBox["x", "2"], " ", "y"}], "+", 
+    RowBox[{"3", " ", "x", " ", 
+     SuperscriptBox["y", "2"]}], "+", 
+    RowBox[{"6", " ", "x", " ", "y", " ", "z"}]}], TraditionalForm]],
+  FontSize->14,
+  FontWeight->"Plain"],
+ "\n\n"
+}], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.601558704453348*^9, 3.601558830439849*^9}, {
+   3.601628594364409*^9, 3.601628628190791*^9}, 3.601628758880187*^9, {
+   3.601628799389217*^9, 3.601629199888747*^9}, {3.601629239249627*^9, 
+   3.60162932337814*^9}, {3.601629358432289*^9, 3.601629559907105*^9}, {
+   3.601629710731978*^9, 3.6016297625146112`*^9}, {3.601629805612749*^9, 
+   3.601629976736744*^9}, {3.601630041702116*^9, 3.6016300939463787`*^9}, 
+   3.601630719111836*^9, {3.601630796238258*^9, 3.601631148631789*^9}},
+ FormatType->"TextForm",
+ FontSize->16],
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
     RowBox[{"Clear", "[", 
-     RowBox[{"p0", ",", "p1", ",", "p2", ",", "x", ",", "y", ",", "z"}], 
-     "]"}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"p0", "[", 
-      RowBox[{"x_", ",", "y_", ",", "z_"}], "]"}], ":=", " ", 
-     RowBox[{"x", "^", "3"}]}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"p1", "[", 
-      RowBox[{"x_", ",", "y_", ",", "z_"}], "]"}], ":=", " ", 
      RowBox[{
-      RowBox[{"3", " ", 
-       SuperscriptBox["x", "2"], " ", "y"}], "+", 
-      RowBox[{"3", " ", "x", " ", 
-       SuperscriptBox["y", "2"]}], "+", 
-      SuperscriptBox["y", "3"], "+", 
-      RowBox[{"3", " ", 
-       SuperscriptBox["x", "2"], " ", "z"}], "+", 
-      RowBox[{"3", " ", "x", " ", 
-       SuperscriptBox["z", "2"]}], "+", 
-      SuperscriptBox["z", "3"]}]}], ";"}], "\[IndentingNewLine]", 
+     "p0", ",", "p1", ",", "p2", ",", "x", ",", "y", ",", "z", ",", 
+      "probZeroShrimpLives", ",", "probOneShrimpLives", ",", 
+      "probTwoShrimpsLive"}], "]"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
-     RowBox[{"p2", "[", 
+     RowBox[{"probZeroShrimpLives", "[", 
+      RowBox[{"x_", ",", "y_", ",", "z_"}], "]"}], ":=", 
+     StyleBox[
+      RowBox[{" ", 
+       StyleBox[" ",
+        FontSize->14,
+        FontWeight->"Plain"]}]], 
+     FormBox[
+      SuperscriptBox["z", "3"],
+      TraditionalForm]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"probOneShrimpLives", "[", 
+      RowBox[{"x_", ",", "y_", ",", "z_"}], "]"}], ":=", " ", 
+     FormBox[
+      RowBox[{
+       SuperscriptBox["x", "3"], "+", " ", 
+       RowBox[{"3", " ", 
+        SuperscriptBox["x", "2"], " ", "z"}], "+", 
+       RowBox[{"3", " ", "x", " ", 
+        SuperscriptBox["z", "2"]}], "+", 
+       SuperscriptBox["y", "3"], "+", 
+       RowBox[{"3", " ", 
+        SuperscriptBox["y", "2"], " ", "z"}], "+", 
+       RowBox[{"3", " ", "y", " ", 
+        SuperscriptBox["z", "2"]}]}],
+      TraditionalForm]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"probTwoShrimpsLive", "[", 
       RowBox[{"x_", ",", "y_", ",", "z_"}], "]"}], " ", ":=", " ", 
-     RowBox[{
-      RowBox[{"6", " ", "x", " ", "y", " ", "z"}], "+", 
-      RowBox[{"3", " ", 
-       SuperscriptBox["y", "2"], " ", "z"}], "+", 
-      RowBox[{"3", " ", "y", " ", 
-       SuperscriptBox["z", "2"]}]}]}], ";"}]}]}]], "Input",
+     FormBox[
+      RowBox[{
+       RowBox[{"3", " ", 
+        SuperscriptBox["x", "2"], " ", "y"}], "+", 
+       RowBox[{"3", " ", "x", " ", 
+        SuperscriptBox["y", "2"]}], "+", 
+       RowBox[{"6", " ", "x", " ", "y", " ", "z"}]}],
+      TraditionalForm]}], ";"}]}]}]], "Input",
  CellChangeTimes->{{3.601559124183563*^9, 3.6015592558430023`*^9}, 
-   3.601559300170882*^9, {3.601559407667076*^9, 3.601559420612389*^9}}],
+   3.601559300170882*^9, {3.601559407667076*^9, 3.601559420612389*^9}, {
+   3.601629578655521*^9, 3.601629626191585*^9}, {3.60163116188769*^9, 
+   3.601631219334468*^9}, {3.601631318910923*^9, 3.601631326915139*^9}}],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
-    RowBox[{"x", "=", ".8"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"x", "=", ".1"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"y", " ", "=", " ", ".1"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"z", "=", ".1"}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{"p0", "[", 
-    RowBox[{"x", ",", "y", ",", "z"}], "]"}], "\[IndentingNewLine]", 
-   RowBox[{"p1", "[", 
-    RowBox[{"x", ",", "y", ",", "z"}], "]"}], "\[IndentingNewLine]", 
-   RowBox[{"p2", "[", 
-    RowBox[{"x", ",", "y", ",", "z"}], "]"}], 
-   "\[IndentingNewLine]"}]}]], "Input",
- CellChangeTimes->{{3.601559332166527*^9, 3.601559400627141*^9}, {
-   3.601559431593603*^9, 3.601559451959569*^9}, {3.601559483272386*^9, 
-   3.601559497867408*^9}, 3.601597524367127*^9, {3.6016023095873137`*^9, 
-   3.601602345427843*^9}, {3.601602390706799*^9, 3.6016024185846977`*^9}, {
-   3.601602453962515*^9, 3.6016025979394407`*^9}, {3.60160262869664*^9, 
-   3.601602646775631*^9}, {3.60160269618121*^9, 3.60160285892898*^9}, {
-   3.6016029072176332`*^9, 3.601602941605934*^9}, {3.601602998002446*^9, 
-   3.601603069834386*^9}}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{"Clear", "[", 
+    RowBox[{"z", "=", ".8"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"{", 
     RowBox[{
-    "p0", ",", "p1", ",", "p2", ",", "w", ",", "x", ",", "y", ",", "z"}], 
-    "]"}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"w", "=", ".7"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"x", "=", ".1"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"y", "=", ".1"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"z", "=", ".1"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"p0", "[", 
-    RowBox[{"w_", ",", "x_", ",", "y_", ",", "z_"}], "]"}], ":=", " ", 
-   SuperscriptBox["w", "4"]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"p1", "[", 
-    RowBox[{"w_", ",", "x_", ",", "y_", ",", "z_"}], "]"}], ":=", 
-   RowBox[{
-    RowBox[{"4", " ", 
-     SuperscriptBox["w", "3"], " ", "x"}], "+", 
-    RowBox[{"6", " ", 
-     SuperscriptBox["w", "2"], " ", 
-     SuperscriptBox["x", "2"]}], "+", 
-    RowBox[{"4", " ", "w", " ", 
-     SuperscriptBox["x", "3"]}], "+", 
-    SuperscriptBox["x", "4"], "+", 
-    RowBox[{"4", " ", 
-     SuperscriptBox["w", "3"], " ", "y"}], "+", 
-    RowBox[{"6", " ", 
-     SuperscriptBox["w", "2"], " ", 
-     SuperscriptBox["y", "2"]}], "+", 
-    RowBox[{"4", " ", "w", " ", 
-     SuperscriptBox["y", "3"]}], "  ", "+", 
-    SuperscriptBox["y", "4"], "+", 
-    RowBox[{"4", " ", 
-     SuperscriptBox["w", "3"], " ", "z"}], "+", 
-    RowBox[{"6", " ", 
-     SuperscriptBox["w", "2"], " ", 
-     SuperscriptBox["z", "2"]}], "+", 
-    RowBox[{"4", " ", "w", " ", 
-     SuperscriptBox["z", "3"]}], "+", 
-    SuperscriptBox["z", "4"]}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"p2", "[", 
-    RowBox[{"w_", ",", "x_", ",", "y_", ",", "z_"}], "]"}], " ", ":=", " ", 
-   RowBox[{
-    RowBox[{"12", " ", 
-     SuperscriptBox["w", "2"], " ", "x", " ", "y"}], "+", 
-    RowBox[{"12", " ", "w", " ", 
-     SuperscriptBox["x", "2"], " ", "y"}], "+", 
-    RowBox[{"4", " ", 
-     SuperscriptBox["x", "3"], " ", "y"}], "+", 
-    RowBox[{"12", " ", "w", " ", "x", " ", 
-     SuperscriptBox["y", "2"]}], "+", 
-    RowBox[{"6", " ", 
-     SuperscriptBox["x", "2"], " ", 
-     SuperscriptBox["y", "2"]}], "+", 
-    RowBox[{"4", " ", "x", " ", 
-     SuperscriptBox["y", "3"]}], "+", 
-    RowBox[{"12", " ", 
-     SuperscriptBox["w", "2"], " ", "x", " ", "z"}], "+", 
-    RowBox[{"12", " ", "w", " ", 
-     SuperscriptBox["x", "2"], " ", "z"}], "+", 
-    RowBox[{"4", " ", 
-     SuperscriptBox["x", "3"], " ", "z"}], "+", 
-    RowBox[{"12", " ", 
-     SuperscriptBox["w", "2"], " ", "y", " ", "z"}], "+", 
-    RowBox[{"12", " ", "w", " ", 
-     SuperscriptBox["y", "2"], " ", "z"}], "+", 
-    RowBox[{"4", " ", 
-     SuperscriptBox["y", "3"], " ", "z"}], "+", 
-    RowBox[{"12", " ", "w", " ", "x", " ", 
-     SuperscriptBox["z", "2"]}], "+", 
-    RowBox[{"6", " ", 
-     SuperscriptBox["x", "2"], " ", 
-     SuperscriptBox["z", "2"]}], "+", 
-    RowBox[{"6", " ", 
-     SuperscriptBox["y", "2"], " ", 
-     SuperscriptBox["z", "2"]}], "+", 
-    RowBox[{"4", " ", "x", " ", 
-     SuperscriptBox["z", "3"]}], "+", 
-    RowBox[{"4", " ", "y", " ", 
-     SuperscriptBox["z", "3"]}], "+", 
-    RowBox[{"12", " ", "w", " ", "y", " ", 
-     SuperscriptBox["z", "2"]}]}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"p3", "[", 
-    RowBox[{"w_", ",", "x_", ",", "y_", ",", "z_"}], "]"}], ":=", " ", 
-   RowBox[{
-    RowBox[{"24", " ", "w", " ", "x", " ", "y", " ", "z"}], "+", 
-    RowBox[{"12", " ", 
-     SuperscriptBox["x", "2"], " ", "y", " ", "z"}], "+", 
-    RowBox[{"12", " ", "x", " ", 
-     SuperscriptBox["y", "2"], " ", "z"}], "+", 
-    RowBox[{"12", " ", "x", " ", "y", " ", 
-     SuperscriptBox["z", "2"]}]}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"p0", "[", 
-    RowBox[{"w", ",", "x", ",", "y", ",", "z"}], "]"}], ",", 
-   "\[IndentingNewLine]", 
-   RowBox[{"p1", "[", 
-    RowBox[{"w", ",", "x", ",", "y", ",", "z"}], "]"}], ",", 
-   "\[IndentingNewLine]", 
-   RowBox[{"p2", "[", 
-    RowBox[{"w", ",", "x", ",", "y", ",", "z"}], "]"}], ",", 
-   "\[IndentingNewLine]", 
-   RowBox[{"p3", "[", 
-    RowBox[{"w", ",", "x", ",", "y", ",", "z"}], "]"}]}], "}"}]}], "Input",
+     RowBox[{"probZeroShrimpLives", "[", 
+      RowBox[{"x", ",", "y", ",", "z"}], "]"}], ",", 
+     RowBox[{"probOneShrimpLives", "[", 
+      RowBox[{"x", ",", "y", ",", "z"}], "]"}], ",", 
+     RowBox[{"probTwoShrimpsLive", "[", 
+      RowBox[{"x", ",", "y", ",", "z"}], "]"}]}], "}"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
  CellChangeTimes->{{3.601559332166527*^9, 3.601559400627141*^9}, {
    3.601559431593603*^9, 3.601559451959569*^9}, {3.601559483272386*^9, 
    3.601559497867408*^9}, 3.601597524367127*^9, {3.6016023095873137`*^9, 
@@ -354,18 +294,17 @@ Cell[BoxData[{
    3.601602453962515*^9, 3.6016025979394407`*^9}, {3.60160262869664*^9, 
    3.601602646775631*^9}, {3.60160269618121*^9, 3.60160285892898*^9}, {
    3.6016029072176332`*^9, 3.601602941605934*^9}, {3.601602998002446*^9, 
-   3.601603069834386*^9}, {3.601603209089864*^9, 3.6016032178457737`*^9}}],
+   3.601603069834386*^9}, {3.601629610295154*^9, 3.601629686732174*^9}, {
+   3.6016312645681458`*^9, 3.601631267013302*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{
-  "0.24009999999999992`", ",", "0.5085`", ",", "0.231`", ",", "0.0204`"}], 
-  "}"}]], "Output",
- CellChangeTimes->{
-  3.6015593566803303`*^9, {3.601559393498954*^9, 3.601559452276422*^9}, 
-   3.601559500370038*^9, {3.601597527716511*^9, 3.6015975369660273`*^9}, {
-   3.601602334271597*^9, 3.601602338413529*^9}, 3.601602989189152*^9, 
-   3.601603041346714*^9, 3.601603073939205*^9, 3.601603218604973*^9}]
+  "0.5120000000000001`", ",", "0.43400000000000016`", ",", 
+   "0.05400000000000002`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.601629663237764*^9, 3.601629687788136*^9}, {
+   3.601631224676888*^9, 3.601631236783368*^9}, 3.601631267696844*^9, 
+   3.601631330662694*^9}]
 }, Open  ]],
 
 Cell[BoxData[""], "Input",
@@ -374,10 +313,101 @@ Cell[BoxData[""], "Input",
 Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.601564113362311*^9, 3.601564113383431*^9}}],
 
-Cell["\<\
-Mathematica allows us to do this with a distribution function\
-\>", "Input",
- CellChangeTimes->{{3.60159397821832*^9, 3.601593997332512*^9}},
+Cell[TextData[StyleBox["To generalize we use the handy function Probability \
+together with the MultinomialDistribution function. Why we have to multiply \
+by 2  or Choose(2,1) in probOneShrimpLives is exercise for reader.",
+ FontSize->14,
+ FontWeight->"Plain"]], "Input",
+ CellChangeTimes->{{3.60159397821832*^9, 3.601593997332512*^9}, {
+   3.601630102689761*^9, 3.60163011170531*^9}, {3.601630148975074*^9, 
+   3.601630169901814*^9}, {3.601630221219467*^9, 3.601630322335129*^9}, {
+   3.601630422641447*^9, 3.601630450695695*^9}, 3.601630681231654*^9, {
+   3.601631375159576*^9, 3.601631459873191*^9}},
+ FormatType->"TextForm",
+ FontSize->16],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\n", 
+  StyleBox[
+   RowBox[{
+    RowBox[{"probZeroShrimpLive", " ", "=", " ", 
+     RowBox[{"Probability", "[", 
+      RowBox[{
+       RowBox[{"And", "[", 
+        RowBox[{
+         RowBox[{"k1", "==", "0"}], " ", ",", " ", 
+         RowBox[{"k2", "==", "0"}], ",", " ", 
+         RowBox[{"k3", ">=", "0"}]}], "]"}], ",", " ", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"k1", ",", "k2", ",", "k3"}], "}"}], "\[Distributed]", 
+        RowBox[{"MultinomialDistribution", "[", 
+         RowBox[{"3", ",", 
+          RowBox[{"{", 
+           RowBox[{".1", ",", ".1", ",", ".8"}], "}"}]}], "]"}]}]}], "]"}]}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"probOneShrimpLives", " ", "=", " ", 
+     RowBox[{"2", "*", 
+      RowBox[{"Probability", "[", 
+       RowBox[{
+        RowBox[{"And", "[", 
+         RowBox[{
+          RowBox[{"k1", ">", "0"}], " ", ",", " ", 
+          RowBox[{"k2", "==", "0"}], ",", " ", 
+          RowBox[{"k3", ">=", "0"}]}], "]"}], ",", " ", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"k1", ",", "k2", ",", "k3"}], "}"}], "\[Distributed]", 
+         RowBox[{"MultinomialDistribution", "[", 
+          RowBox[{"3", ",", 
+           RowBox[{"{", 
+            RowBox[{".1", ",", ".1", ",", ".8"}], "}"}]}], "]"}]}]}], 
+       "]"}]}]}], "\[IndentingNewLine]", 
+    RowBox[{"probTwoShrimpsLive", " ", "=", " ", 
+     RowBox[{"Probability", "[", 
+      RowBox[{
+       RowBox[{"And", "[", 
+        RowBox[{
+         RowBox[{"k1", ">", "0"}], " ", ",", " ", 
+         RowBox[{"k2", ">", "0"}], ",", " ", 
+         RowBox[{"k3", ">=", "0"}]}], "]"}], ",", " ", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"k1", ",", "k2", ",", "k3"}], "}"}], "\[Distributed]", 
+        RowBox[{"MultinomialDistribution", "[", 
+         RowBox[{"3", ",", 
+          RowBox[{"{", 
+           RowBox[{".1", ",", ".1", ",", ".8"}], "}"}]}], "]"}]}]}], "]"}]}]}],
+   FontSize->12]}]], "Input",
+ CellChangeTimes->{{3.60159397821832*^9, 3.601593997332512*^9}, {
+  3.601630102689761*^9, 3.60163011170531*^9}, {3.601630148975074*^9, 
+  3.601630169901814*^9}, {3.601630221219467*^9, 3.60163038941389*^9}, {
+  3.601630452858458*^9, 3.601630532993997*^9}},
+ FormatType->"InputForm",
+ FontSize->16],
+
+Cell[BoxData["0.5120000000000001`"], "Output",
+ CellChangeTimes->{3.6016304853140583`*^9, 3.6016305366616077`*^9}],
+
+Cell[BoxData["0.43400000000000016`"], "Output",
+ CellChangeTimes->{3.6016304853140583`*^9, 3.6016305366636143`*^9}],
+
+Cell[BoxData["0.05400000000000002`"], "Output",
+ CellChangeTimes->{3.6016304853140583`*^9, 3.601630536665831*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "\n",
+ StyleBox["\n",
+  FontSize->14],
+ StyleBox["In order to generalize this to use an arbitrary number of \
+variables we have to do the following cryptic stuff",
+  FontSize->14,
+  FontWeight->"Plain"]
+}], "Input",
+ CellChangeTimes->{{3.601630599898382*^9, 3.60163064364944*^9}},
  FormatType->"TextForm"],
 
 Cell[BoxData[
@@ -558,9 +588,8 @@ Cell[BoxData[
    3.6016064388015623`*^9, 3.6016065139462442`*^9}]
 }, Open  ]]
 },
-WindowSize->{1042, 719},
+WindowSize->{1323, 763},
 WindowMargins->{{30, Automatic}, {Automatic, 23}},
-Magnification->1.25,
 FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (August 26, \
 2012)",
 StyleDefinitions->"Default.nb"
@@ -576,26 +605,29 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[557, 20, 417, 10, 131, "Input"],
+Cell[557, 20, 358, 7, 31, "Input",
+ Evaluatable->False],
+Cell[918, 29, 5978, 183, 587, "Input",
+ Evaluatable->False],
+Cell[6899, 214, 1960, 53, 97, "Input"],
 Cell[CellGroupData[{
-Cell[999, 34, 627, 18, 91, "Input"],
-Cell[1629, 54, 710, 20, 38, "Output"],
-Cell[2342, 76, 2671, 75, 87, "Output"]
+Cell[8884, 271, 1302, 26, 118, "Input"],
+Cell[10189, 299, 310, 7, 27, "Output"]
 }, Open  ]],
-Cell[5028, 154, 412, 8, 66, "Input"],
-Cell[5443, 164, 1425, 38, 118, "Input"],
-Cell[6871, 204, 1117, 23, 167, "Input"],
+Cell[10514, 309, 92, 1, 27, "Input"],
+Cell[10609, 312, 92, 1, 27, "Input"],
+Cell[10704, 315, 644, 11, 30, "Input"],
 Cell[CellGroupData[{
-Cell[8013, 231, 4819, 125, 321, "Input"],
-Cell[12835, 358, 444, 9, 33, "Output"]
+Cell[11373, 330, 2247, 58, 83, "Input"],
+Cell[13623, 390, 114, 1, 27, "Output"],
+Cell[13740, 393, 115, 1, 27, "Output"],
+Cell[13858, 396, 113, 1, 27, "Output"]
 }, Open  ]],
-Cell[13294, 370, 92, 1, 33, "Input"],
-Cell[13389, 373, 92, 1, 33, "Input"],
-Cell[13484, 376, 176, 4, 33, "Input"],
-Cell[13663, 382, 5088, 127, 376, "Input"],
+Cell[13986, 400, 322, 10, 58, "Input"],
+Cell[14311, 412, 5088, 127, 283, "Input"],
 Cell[CellGroupData[{
-Cell[18776, 513, 822, 20, 91, "Input"],
-Cell[19601, 535, 1411, 22, 33, "Output"]
+Cell[19424, 543, 822, 20, 73, "Input"],
+Cell[20249, 565, 1411, 22, 27, "Output"]
 }, Open  ]]
 }
 ]
