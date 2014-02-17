@@ -1,0 +1,399 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     13475,        390]
+NotebookOptionsPosition[     12379,        351]
+NotebookOutlinePosition[     12755,        368]
+CellTagsIndexPosition[     12712,        365]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Suppose you have 2 shrimp in a unit square
+Let x be probabilty that food pellet doesn't land in either shrimp circle
+Let y be probabilty that food pellet lands in shrimp circle 1
+Let z be probabilty that food pellet lands in shrimp circle 2
+
+If you toss 3 food pellets into square then distribution is given by \
+multinomial.
+\
+\>", "Input",
+ CellChangeTimes->{{3.601558704453348*^9, 3.601558830439849*^9}},
+ FormatType->"TextForm"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Expand", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"x", "+", "y", "+", "z"}], ")"}], "^", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.601558833175963*^9, 3.60155884892058*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["x", "3"], "+", 
+  RowBox[{"3", " ", 
+   SuperscriptBox["x", "2"], " ", "y"}], "+", 
+  RowBox[{"3", " ", "x", " ", 
+   SuperscriptBox["y", "2"]}], "+", 
+  SuperscriptBox["y", "3"], "+", 
+  RowBox[{"3", " ", 
+   SuperscriptBox["x", "2"], " ", "z"}], "+", 
+  RowBox[{"6", " ", "x", " ", "y", " ", "z"}], "+", 
+  RowBox[{"3", " ", 
+   SuperscriptBox["y", "2"], " ", "z"}], "+", 
+  RowBox[{"3", " ", "x", " ", 
+   SuperscriptBox["z", "2"]}], "+", 
+  RowBox[{"3", " ", "y", " ", 
+   SuperscriptBox["z", "2"]}], "+", 
+  SuperscriptBox["z", "3"]}]], "Output",
+ CellChangeTimes->{3.601558849860241*^9}]
+}, Open  ]],
+
+Cell["\<\
+Now probablity that all three pellets lands outside of two shrimp circles is \
+x^3
+Probability that two pellets land outside of two shrimp circles and one \
+pellet lands in shrimp circle 1 is 3x^2 y, etc.
+So we have following probabilities that 0 ,1, and 2 shrimps lives\
+\>", "Input",
+ CellChangeTimes->{{3.601558981823387*^9, 3.6015589826376333`*^9}, {
+  3.601559021203878*^9, 3.601559120782598*^9}},
+ FormatType->"TextForm"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Clear", "[", 
+     RowBox[{"p0", ",", "p1", ",", "p2", ",", "x", ",", "y", ",", "z"}], 
+     "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"p0", "[", 
+      RowBox[{"x_", ",", "y_", ",", "z_"}], "]"}], ":=", " ", 
+     RowBox[{"x", "^", "3"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"p1", "[", 
+      RowBox[{"x_", ",", "y_", ",", "z_"}], "]"}], ":=", " ", 
+     RowBox[{
+      RowBox[{"3", " ", 
+       SuperscriptBox["x", "2"], " ", "y"}], "+", 
+      RowBox[{"3", " ", "x", " ", 
+       SuperscriptBox["y", "2"]}], "+", 
+      SuperscriptBox["y", "3"], "+", 
+      RowBox[{"3", " ", 
+       SuperscriptBox["x", "2"], " ", "z"}], "+", 
+      RowBox[{"3", " ", "x", " ", 
+       SuperscriptBox["z", "2"]}], "+", 
+      SuperscriptBox["z", "3"]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"p2", "[", 
+      RowBox[{"x_", ",", "y_", ",", "z_"}], "]"}], " ", ":=", " ", 
+     RowBox[{
+      RowBox[{"6", " ", "x", " ", "y", " ", "z"}], "+", 
+      RowBox[{"3", " ", 
+       SuperscriptBox["y", "2"], " ", "z"}], "+", 
+      RowBox[{"3", " ", "y", " ", 
+       SuperscriptBox["z", "2"]}]}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.601559124183563*^9, 3.6015592558430023`*^9}, 
+   3.601559300170882*^9, {3.601559407667076*^9, 3.601559420612389*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", "=", ".8"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"y", " ", "=", " ", ".1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"z", "=", ".1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"p0", "[", 
+    RowBox[{"x", ",", "y", ",", "z"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"p1", "[", 
+    RowBox[{"x", ",", "y", ",", "z"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"p2", "[", 
+    RowBox[{"x", ",", "y", ",", "z"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"expectedvalue", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"1", "*", 
+      RowBox[{"p1", "[", 
+       RowBox[{"x", ",", "y", ",", "z"}], "]"}]}], " ", "+", " ", 
+     RowBox[{"2", " ", "*", " ", 
+      RowBox[{"p2", "[", 
+       RowBox[{"x", ",", "y", ",", "z"}], "]"}]}]}]}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"p0", "[", 
+     RowBox[{"x", ",", "y", ",", "z"}], "]"}], "+", 
+    RowBox[{"p1", "[", 
+     RowBox[{"x", ",", "y", ",", "z"}], "]"}], "+", " ", 
+    RowBox[{"p2", "[", 
+     RowBox[{"x", ",", "y", ",", "z"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.601559332166527*^9, 3.601559400627141*^9}, {
+  3.601559431593603*^9, 3.601559451959569*^9}, {3.601559483272386*^9, 
+  3.601559497867408*^9}}],
+
+Cell[BoxData["0.5120000000000001`"], "Output",
+ CellChangeTimes->{
+  3.6015593566803303`*^9, {3.601559393498954*^9, 3.601559452276422*^9}, 
+   3.601559500370038*^9}],
+
+Cell[BoxData["0.43400000000000016`"], "Output",
+ CellChangeTimes->{
+  3.6015593566803303`*^9, {3.601559393498954*^9, 3.601559452276422*^9}, 
+   3.601559500371793*^9}],
+
+Cell[BoxData["0.05400000000000002`"], "Output",
+ CellChangeTimes->{
+  3.6015593566803303`*^9, {3.601559393498954*^9, 3.601559452276422*^9}, 
+   3.601559500373044*^9}],
+
+Cell[BoxData["0.5420000000000003`"], "Output",
+ CellChangeTimes->{
+  3.6015593566803303`*^9, {3.601559393498954*^9, 3.601559452276422*^9}, 
+   3.6015595003742867`*^9}],
+
+Cell[BoxData["1.0000000000000002`"], "Output",
+ CellChangeTimes->{
+  3.6015593566803303`*^9, {3.601559393498954*^9, 3.601559452276422*^9}, 
+   3.601559500375822*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.601564210620419*^9, 3.601564210639123*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.601564113362311*^9, 3.601564113383431*^9}}],
+
+Cell["\<\
+Mathematica allows us to do this with a distribution function\
+\>", "Input",
+ CellChangeTimes->{{3.60159397821832*^9, 3.601593997332512*^9}},
+ FormatType->"TextForm"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"MD", " ", "=", 
+   RowBox[{"MultinomialDistribution", "[", 
+    RowBox[{"3", ",", 
+     RowBox[{"{", 
+      RowBox[{".1", ",", ".1", ",", ".8"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"prob", "[", 
+    RowBox[{"conditions_", ",", "variables_", ",", "probs_"}], "]"}], ":=", 
+   RowBox[{"Probability", "[", 
+    RowBox[{
+     RowBox[{"And", "@@", "conditions"}], ",", 
+     RowBox[{"variables", "\[Distributed]", 
+      RowBox[{"MultinomialDistribution", "[", 
+       RowBox[{
+        RowBox[{"Length", "[", "variables", "]"}], ",", "probs"}], "]"}]}]}], 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"zeroconditions", "[", "vars_", "]"}], ":=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "\[Equal]", "0"}], "&"}], ",", " ", "vars"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"prob0conditions", "[", "vars_", "]"}], ":=", " ", 
+   RowBox[{"Append", "[", 
+    RowBox[{
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "\[Equal]", "0"}], "&"}], ",", 
+       RowBox[{"Drop", "[", 
+        RowBox[{"vars", ",", 
+         RowBox[{"-", "1"}]}], "]"}]}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"Last", "[", "vars", "]"}], ">", "0"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"prob0vars", "[", 
+    RowBox[{"vars_", ",", "probs_"}], "]"}], ":=", 
+   RowBox[{"prob", "[", 
+    RowBox[{
+     RowBox[{"prob0conditions", "[", "vars", "]"}], ",", "vars", ",", 
+     "probs"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"prob0vars", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"x1", ",", "x2", ",", "x3"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{".1", ",", ".1", ",", ".8"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"prob0", " ", "=", " ", 
+   RowBox[{"prob", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["x", "1"], "==", "0"}], ",", " ", 
+       RowBox[{
+        SubscriptBox["x", "2"], " ", "==", "0"}], ",", " ", 
+       RowBox[{
+        SubscriptBox["x", "3"], ">", "0"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["x", "1"], ",", 
+       SubscriptBox["x", "2"], ",", 
+       SubscriptBox["x", "3"]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{".1", ",", ".1", ",", ".8"}], "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"prob1", " ", "=", " ", 
+  RowBox[{"2", " ", "*", " ", 
+   RowBox[{"prob", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["x", "1"], ">", "0"}], ",", 
+       RowBox[{
+        SubscriptBox["x", "2"], "==", "0"}], ",", 
+       RowBox[{
+        SubscriptBox["x", "3"], ">=", "0"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["x", "1"], ",", 
+       SubscriptBox["x", "2"], ",", 
+       SubscriptBox["x", "3"]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{".1", ",", ".1", ",", ".8"}], "}"}]}], 
+    "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"prob2", " ", "=", " ", 
+   RowBox[{"prob", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["x", "1"], ">", "0"}], ",", 
+       RowBox[{
+        SubscriptBox["x", "2"], ">", "0"}], ",", 
+       RowBox[{
+        SubscriptBox["x", "3"], ">=", "0"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["x", "1"], ",", 
+       SubscriptBox["x", "2"], ",", 
+       SubscriptBox["x", "3"]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{".1", ",", ".1", ",", ".8"}], "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.60159400525021*^9, 3.6015940681928*^9}, {
+  3.601594635580361*^9, 3.601594734774082*^9}, {3.6015947738840237`*^9, 
+  3.6015950359763927`*^9}, {3.601595102546195*^9, 3.6015951245563927`*^9}, {
+  3.601595223779718*^9, 3.601595457559935*^9}, {3.601595491428484*^9, 
+  3.6015955107316933`*^9}, {3.601595553947057*^9, 3.6015955792411423`*^9}}],
+
+Cell[BoxData["0.5120000000000001`"], "Output",
+ CellChangeTimes->{{3.601594054201769*^9, 3.601594069702282*^9}, {
+   3.601594657061116*^9, 3.601594731210635*^9}, {3.6015947860820923`*^9, 
+   3.601594854347499*^9}, 3.601594935753501*^9, 3.601595036399918*^9, 
+   3.601595125006915*^9, 3.6015952282254877`*^9, 3.601595287038484*^9, {
+   3.601595355731626*^9, 3.601595370621462*^9}, {3.601595420666507*^9, 
+   3.601595458058496*^9}, 3.601595580911388*^9}],
+
+Cell[BoxData["0.5120000000000001`"], "Output",
+ CellChangeTimes->{{3.601594054201769*^9, 3.601594069702282*^9}, {
+   3.601594657061116*^9, 3.601594731210635*^9}, {3.6015947860820923`*^9, 
+   3.601594854347499*^9}, 3.601594935753501*^9, 3.601595036399918*^9, 
+   3.601595125006915*^9, 3.6015952282254877`*^9, 3.601595287038484*^9, {
+   3.601595355731626*^9, 3.601595370621462*^9}, {3.601595420666507*^9, 
+   3.601595458058496*^9}, 3.601595580913218*^9}],
+
+Cell[BoxData["0.43400000000000016`"], "Output",
+ CellChangeTimes->{{3.601594054201769*^9, 3.601594069702282*^9}, {
+   3.601594657061116*^9, 3.601594731210635*^9}, {3.6015947860820923`*^9, 
+   3.601594854347499*^9}, 3.601594935753501*^9, 3.601595036399918*^9, 
+   3.601595125006915*^9, 3.6015952282254877`*^9, 3.601595287038484*^9, {
+   3.601595355731626*^9, 3.601595370621462*^9}, {3.601595420666507*^9, 
+   3.601595458058496*^9}, 3.601595580914599*^9}],
+
+Cell[BoxData["0.05400000000000002`"], "Output",
+ CellChangeTimes->{{3.601594054201769*^9, 3.601594069702282*^9}, {
+   3.601594657061116*^9, 3.601594731210635*^9}, {3.6015947860820923`*^9, 
+   3.601594854347499*^9}, 3.601594935753501*^9, 3.601595036399918*^9, 
+   3.601595125006915*^9, 3.6015952282254877`*^9, 3.601595287038484*^9, {
+   3.601595355731626*^9, 3.601595370621462*^9}, {3.601595420666507*^9, 
+   3.601595458058496*^9}, 3.601595580916213*^9}]
+}, Open  ]]
+},
+WindowSize->{1042, 719},
+WindowMargins->{{32, Automatic}, {Automatic, 0}},
+Magnification->1.25,
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (August 26, \
+2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 442, 11, 131, "Input"],
+Cell[CellGroupData[{
+Cell[1024, 35, 206, 5, 33, "Input"],
+Cell[1233, 42, 635, 18, 38, "Output"]
+}, Open  ]],
+Cell[1883, 63, 437, 9, 66, "Input"],
+Cell[2323, 74, 1425, 38, 118, "Input"],
+Cell[CellGroupData[{
+Cell[3773, 116, 1304, 33, 186, "Input"],
+Cell[5080, 151, 165, 3, 33, "Output"],
+Cell[5248, 156, 166, 3, 33, "Output"],
+Cell[5417, 161, 166, 3, 33, "Output"],
+Cell[5586, 166, 167, 3, 33, "Output"],
+Cell[5756, 171, 165, 3, 33, "Output"]
+}, Open  ]],
+Cell[5936, 177, 92, 1, 33, InheritFromParent],
+Cell[6031, 180, 92, 1, 33, InheritFromParent],
+Cell[6126, 183, 176, 4, 33, "Input"],
+Cell[CellGroupData[{
+Cell[6327, 191, 4214, 125, 357, "Input"],
+Cell[10544, 318, 452, 6, 33, "Output"],
+Cell[10999, 326, 452, 6, 33, "Output"],
+Cell[11454, 334, 453, 6, 33, "Output"],
+Cell[11910, 342, 453, 6, 33, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
